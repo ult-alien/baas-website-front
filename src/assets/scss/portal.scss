@@ -1,0 +1,28 @@
+/**
+*门户样式
+*/
+p{
+  text-indent: 28px !important;
+}
+p.no-indent{
+  text-indent: 0 !important;
+}
+.text-bold{
+  font-weight: bold;
+}
+.dot-list{
+  > p{
+    position: relative;
+    padding-left: 16px;
+    &:before{
+      content: '';
+      position: absolute;
+      height: .5em;
+      width: .5em;
+      left: 4px;
+      background: #5E5E5E;
+      top: .5em;
+      border-radius: 100%;
+    }
+  }
+}

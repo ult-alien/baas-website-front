@@ -1,0 +1,147 @@
+@import "variables";
+
+/*表单样式覆盖*/
+.static-form .el-form-item {
+  margin: 0!important;
+}
+/*表单样式覆盖*/
+
+/*按钮覆盖*/
+.el-button >i+span {
+  margin-left: 5px !important;
+}
+/*按钮覆盖 end*/
+
+/*表格样式覆盖*/
+.cell .el-button--mini {
+  padding: 7px 9px !important;
+}
+
+.el-table {
+  border: 1px solid #e6ebf5;
+  &.el-table--fit{
+    border-right: 1px solid #e6ebf5 !important;
+    border-bottom: 0px !important;
+  }
+  color: $font-color;
+}
+
+.el-table__header {
+  tr{
+    background-color: #FAFAFA;
+    th{
+      background-color: transparent;
+      .cell {
+        font-weight: bold !important;
+      }
+    }
+  }
+}
+
+/* 列表在火狐、ie不显示边框问题*/
+.el-table--striped .el-table__body tr:nth-child(2n){
+  background: #FAFAFA;
+  td{
+    background: none !important;
+  }
+}
+
+/*表格样式覆盖 end*/
+
+/*树样式覆盖*/
+.el-tree-node__content {
+  height: 36px;
+}
+/*树样式覆盖 end*/
+
+/*对话框样式覆盖*/
+.el-dialog__footer{
+  border-top: 1px solid $border-color !important;
+  padding:12px 30px !important;
+}
+.el-dialog__header{
+  padding: 20px !important;
+  border-bottom: 1px solid $border-color !important;
+}
+.el-dialog__body {
+  padding: 20px 30px !important;
+}
+/*对话框样式覆盖 end*/
+
+/*标签页样式覆盖*/
+.el-tabs__nav-wrap{
+  padding-left: 20px;
+  &:after {
+    height: 1px;
+  }
+}
+.el-tabs__item.is-active {
+  font-weight: bold;
+}
+
+.el-tabs {
+  &:not(.el-tabs--card) {
+    .el-tabs__item:nth-child(n+3){
+      position: relative;
+      &:before{
+        content: "";
+        position: absolute;
+        left: 0px;
+        top:10px;
+        height: 20px;
+        width: 1px;
+        background: $border-color;
+      }
+    }
+  }
+}
+.el-tabs__item:focus.is-active.is-focus:not(:active) { // 覆盖样式，解决tab标签出现边框问题
+  box-shadow:none !important;
+  border-radius: inherit !important;;
+}
+/*标签页样式覆盖 end*/
+
+/*标签页样式覆盖 end*/
+/*input-number 样式覆盖*/
+.el-input-number.is-controls-right .el-input > input{
+  text-align: left !important;
+}
+
+.el-input-number.is-without-controls .el-input > input{
+  text-align: left !important;
+}
+/*input-number 样式覆盖 end*/
+/*step 组件样式覆盖*/
+.el-step__head.is-success {
+  color: $primary-color;
+  border-color: $primary-color;
+  .el-step__icon.is-text{
+    background: $primary-color-light;
+  }
+  .el-step__line-inner{
+    transition-delay: 0ms;
+    border-width: 1px !important;
+    width: 100% !important;
+  }
+}
+.el-step__title.is-success{
+  color: $primary-color;
+}
+
+.el-step__head.is-process {
+  color: #FFF;
+  border-color: $primary-color;
+  .el-step__icon.is-text{
+    background: $primary-color;
+  }
+}
+.el-step__title.is-process{
+  color: $primary-color;
+}
+/*step 组件样式覆盖 end*/
+
+/*el-form-item 组件样式覆盖 end*/
+.el-form-item--medium .el-form-item__content {
+  height: 36px;
+}
+/*el-form-item 组件样式覆盖*/
