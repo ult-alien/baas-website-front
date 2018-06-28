@@ -22,11 +22,11 @@
         }
         return [
           {resName: '首页', stateName: 'index'},
-         /* {resName: '产品', stateName: 'login'},*/
           {resName: '产品', stateName: 'product'},
           {resName: '区块链', stateName: 'block-chain'},
           {resName: '合作洽谈', stateName: 'negotiate'},
-          {resName: '关于我们', stateName: 'about'}
+          {resName: '关于我们', stateName: 'about'},
+          {resName: '登录', stateName: 'login'}
         ];
       },
       isLogin () {
