@@ -4,7 +4,7 @@
       <div class="header-content">
         <div class="logo" @click="logoClick">
           <logo>
-            <span style="color: #000;" slot="companyName">共赢链</span>
+            <span style="color: #000;" slot="companyName">GBaaS</span>
           </logo>
         </div>
         <div class="nav-bar">
@@ -45,12 +45,12 @@
               <i class="plicon plicon-huiyuan text-primary"></i>
               <small>&nbsp;{{member}}</small>
             </div>
-            <!--<div class="item" @click="iconClick">
+            <div class="item" @click="iconClick">
               <span class="item-icon"><i class="plicon plicon-xiaoxi1"></i></span><span>我的消息<el-badge :value="msgCount" :max="99" class="item"/></span>
-            </div>-->
-           <!-- <div class="item text-center" @click="entClick">
+            </div>
+            <div class="item text-center" @click="entClick">
               <span>{{user.ent.organName}}</span>
-            </div>-->
+            </div>
             <div class="item">
               <span class="item-icon" style="color: black"><i class="plicon plicon-xiangqing"></i></span><span style="color: black">基本信息</span>
             </div>
@@ -59,11 +59,11 @@
             </div>
           </div>
 
-          <!--<span class="name" v-if="isLogin">
+          <span class="name" v-if="isLogin">
             <span @click="nameClick">{{user.userName}}</span>
             &nbsp;|&nbsp;
             <span @click="logout">退出</span>
-          </span>-->
+          </span>
         </div>
         <div class="pull-right">
           <slot name="action"></slot>

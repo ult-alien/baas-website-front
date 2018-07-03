@@ -150,7 +150,7 @@
         }
       }
     },
-    created () {
+    created () {/*
       this.$api.bsp.notice.getHomeNotices({topNum: 4}).then(ret => {
         if (ret && ret.data && ret.data.length > 3) {
           this.notices = ret.data.slice(0, 3);
@@ -158,7 +158,7 @@
         }else {
           this.notices = ret.data;
         }
-      });
+      });*/
     },
     destroyed () {
       // 跳转之后需要注销事件

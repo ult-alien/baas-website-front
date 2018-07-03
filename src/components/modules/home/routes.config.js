@@ -50,6 +50,14 @@ export default [
         }
       },
       {
+        desc: 'API',
+        path: 'baas-api',
+        name: 'baas-api',
+        component (resolve) {
+          require.ensure([], () => resolve(require('components/modules/home/sub/baas-api.vue')), 'baas-api');
+        }
+      },
+      {
         desc: '区块链',
         path: 'block-chain',
         name: 'block-chain',

@@ -30,7 +30,17 @@ export default {
   },
   getVerifyCode () { // 获取验证码
     let apiUrl = HttpPrefix.API + '/auth/getVerifycode?rdm=' + Math.random();
+    console.debug('getVerifyCode return=' + httpUtil.genPath(apiUrl));
     return httpUtil.genPath(apiUrl);
+  },
+  getCaptcha (random) {
+    let url = HttpPrefix.API + '/auth/getVerifycode?rdm=' + random;
+    console.debug('getCaptcha url=' + url);
+    return http.get(url);
+    // return http.get(url).then(resp => {
+    //   console.debug('getCaptcha resp.body=' + resp.body);
+    //   return resp.body;
+    // });
   },
   getSMS () { // 获取短信验证码
     let url = HttpPrefix.API + '/auth/verifyCode';
