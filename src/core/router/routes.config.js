@@ -24,6 +24,14 @@ export default [
     }
   },
   {
+    desc: '注册',
+    path: '/admin/register',
+    name: 'register',
+    component (resolve) {
+      require.ensure([], () => resolve(require('components/register/register.vue')), 'register');
+    }
+  },
+  {
     desc: '登录',
     path: '/admin/login',
     name: 'login',

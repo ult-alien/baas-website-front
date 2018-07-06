@@ -267,7 +267,7 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
-  @import "../accreditation/style";
+  @import "./scss/style";
   /*.register-form{
     width: 56%;
     margin: 40px 22% 0 22%;
@@ -278,7 +278,7 @@
     img{
       cursor: pointer;
     }
-    background: url('../../../../login/img/loading.gif') no-repeat center 0;
+    background: url('../login/img/loading.gif') no-repeat center 0;
   }
 </style>
 
