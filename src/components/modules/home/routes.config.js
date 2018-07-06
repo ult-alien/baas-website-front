@@ -4,6 +4,8 @@
  *      2、desc 不是vue-router的配置，是自动定义的，主要用来描述当前路由
  * @type {[*]}
  */
+import apidocRoutes from './apidocRoutes-config';
+
 export default [
   {
     desc: '门户',
@@ -50,20 +52,21 @@ export default [
         }
       },
       {
-        desc: 'API',
-        path: 'baas-api',
-        name: 'baas-api',
-        component (resolve) {
-          require.ensure([], () => resolve(require('components/modules/home/sub/baas-api.vue')), 'baas-api');
-        }
-      },
-      {
         desc: '区块链',
         path: 'block-chain',
         name: 'block-chain',
         component (resolve) {
           require.ensure([], () => resolve(require('components/modules/home/sub/block-chain.vue')), 'block-chain');
         }
+      },
+      {
+        desc: '菜单',
+        path: 'api-menu',
+        name: 'api-menu',
+        component (resolve) {
+          require.ensure([], () => resolve(require('components/modules/home/sub/ui/apidoc-menu.vue')), 'api-menu');
+        },
+        children: apidocRoutes
       },
       {
         desc: '产品',
@@ -76,6 +79,14 @@ export default [
         path: 'negotiate',
         name: 'negotiate',
         component: () => import(/* webpackChunkName: 'negotiate' */'components/modules/home/sub/negotiate.vue')
+      },
+      {
+        desc: 'API',
+        path: 'baas-api',
+        name: 'baas-api',
+        component (resolve) {
+          require.ensure([], () => resolve(require('components/modules/bsp/layout.vue')), 'bsp.biz');
+        }
       }
     ]
   }

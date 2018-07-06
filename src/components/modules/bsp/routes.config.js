@@ -32,6 +32,14 @@ export default [
             }
           },
           {
+            desc: '闪闪',
+            name: 'example.components.icons',
+            path: 'notice-list',
+            component (resolve) {
+              require.ensure([], () => resolve(require('components/modules/bsp/notice/notice-list.vue')), 'bsp.biz.notice-list');
+            }
+          },
+          {
             desc: '公告详情',
             name: 'bsp.biz.notice-detail',
             path: 'notice-detail/:noticeId',

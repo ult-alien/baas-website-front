@@ -24,6 +24,7 @@
         return [
           {resName: '首页', stateName: 'index'},
           {resName: '产品概述', stateName: 'product'},
+          {resName: '菜单', stateName: 'api-menu'},
           {resName: 'API', stateName: 'baas-api'},
           {resName: '区块链', stateName: 'block-chain'},
           {resName: '合作洽谈', stateName: 'negotiate'},

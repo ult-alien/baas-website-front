@@ -29,17 +29,18 @@
             <el-form-item class="login-btn-wrapper">
               <el-button  type="primary" class="login-btn" @click="send" :loading="loading">登录</el-button>
             </el-form-item>
+            <el-form-item class="login-btn-wrapper">
+              <el-button type="primary" class="login-btn" @click="registerBuyer">免费注册</el-button>
+            </el-form-item>
             <!--<el-form-item>-->
               <el-row>
                 <el-col :span="9">
-                     <el-checkbox v-model="form.rememberMe" checked>记住密码</el-checkbox>
+                  <el-checkbox v-model="form.rememberMe" class="savePassword" checked>记住密码</el-checkbox>
                 </el-col>
-                <!--<el-col :span="12"  class="text-left">
-                  <el-button type="text" class="forgetPass" @click="registerBuyer">免费注册</el-button>
-                </el-col>-->
                 <el-col :span="12">
                   <el-button type="text" class="forgetPass" @click="forgetPassword">忘记密码&nbsp;?</el-button>
                 </el-col>
+
               </el-row>
             <!--</el-form-item>-->
           </el-form>
@@ -121,7 +122,6 @@
         this.$api.core.getCaptcha(Math.random()).then(res =>{
           this.verifyCode=res.body;
           this.loading = false;
-          console.debug("refreshVerifyCode...this.verifyCode="+this.verifyCode);
         });
 
        // this.verifyCode = this.$api.core.getCaptcha(Math.random());
@@ -133,15 +133,16 @@
         this.$router.push({name: 'forgetPass'});
       },
       registerBuyer () {
-        // let registerPath = process.env.NODE_ENV === 'production' ? prodEnv.registerPath : devEnv.registerPath;
-        /* if (process.env.NODE_ENV === 'production') {
+        console.debug("registerBuyer...");
+        //let registerPath = process.env.NODE_ENV === 'production' ? prodEnv.registerPath : devEnv.registerPath;
+        if (process.env.NODE_ENV === 'production') {
           this.$api.core.getBuyerRegAddress().then(ret => {
             window.location.href = ret.address;
           });
         } else {
           this.$router.push({name: ''});
-        } */
-        this.$router.push({'name': 'bsp.register'});
+        }
+        this.$router.push({'name': 'register'});
       }
     },
     created () {
@@ -178,7 +179,7 @@
           top: calc(45% - 180px);
           right: 100px;
           box-shadow: 2px 2px 5px rgb(204, 204, 204);
-          height: 360px;
+          height: 400px;
           width: 330px;
           background: rgba(255, 255, 255, 0.8);
           .login-title {
@@ -194,10 +195,15 @@
               text-align: right;
             }
             .forgetPass {
-              padding: 2px 0px;
+              margin-left: 100px;
+              padding: 0px 0px;
+            }
+            .savePassword {
+              padding: 0px 0px;
             }
           }
           .login-btn {
+            margin: 5px 0px;
             width: 100%;
           }
           .code-img{

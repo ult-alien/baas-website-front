@@ -2,13 +2,13 @@
   <div>
     <top-background></top-background>
     <pl-header :menus="[]"    @iconclick="iconClick" @nameclick="nameClick">
-      <!--<div slot="action" class="action">
+      <div slot="action" class="action">
         <span @click="toHome">主页</span>
         <span @click="toService">服务大厅</span>
-      </div>-->
+      </div>
     </pl-header>
     <router-view></router-view>
-    <!--<side-toolbar></side-toolbar>-->
+    <side-toolbar></side-toolbar>
     <pl-footer></pl-footer>
   </div>
 </template>

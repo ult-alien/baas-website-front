@@ -28,8 +28,6 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-  @import "~assets/scss/variables";
-  @import "~assets/scss/portal";
   .wrapper{
     .news-card{
       cursor: pointer;
