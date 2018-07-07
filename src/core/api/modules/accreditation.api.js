@@ -13,5 +13,5 @@ export default {
     return http.post(url, obj).then(resp => {
       return resp.body;
     });
-  },
+  }
 };
