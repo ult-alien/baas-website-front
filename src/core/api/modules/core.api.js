@@ -10,7 +10,7 @@ export default {
       return resp.body;
     });
   },
-  logout () { // 注销
+  H () { // 注销
     let url = HttpPrefix.API + '/user/logout';
     return http.post(url).then(resp => {
       return resp.body;

@@ -84,7 +84,7 @@
 </template>
 
 <script>
-  import validators from 'core/utils/validators.js';
+  import validators from 'src/core/utils/validators.js';
 //  import {MsgType} from 'core/constants';
   import config from 'src/config';
   export default {

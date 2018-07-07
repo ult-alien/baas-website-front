@@ -1,3 +1,4 @@
+import Vue from 'vue';
 export default {
   methods: {
     // 统一社会信用代码校验器
@@ -80,7 +81,7 @@ export default {
           if (rule.excludeCurUser) {
             params.excludeCurUser = rule.excludeCurUser;
           }
-          this.$api.cust.accreditation.checkUserExist(params).then(ret => {
+          Vue.api.core.checkUserExist(params).then(ret => {
             if (rule.existForTrue) {
               if (ret) {
                 callback();
