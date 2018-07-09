@@ -52,7 +52,9 @@
                       </el-input>
                     </el-col>
                     <el-col :span="4" class="text-right">
-                      <div class="code-img"><img label="点击刷新验证码"  width="80" :src="verifyCode"  @click="refreshVerifyCode"/></div>
+                      <div class="code-img">
+                        <div title="点击刷新验证码"  width="80" v-html="verifyCode"  @click="refreshVerifyCode"/>
+                      </div>
                     </el-col>
                   </el-row>
                 </el-form-item>
@@ -117,7 +119,7 @@
           contactorId: '',
           password: '',
           password2: '',
-          verifyCode: '',
+          verifyCode: this.refreshVerifyCode(),
           msgVerifyCode: ''
         },
         newUser: true,
@@ -125,7 +127,7 @@
         time: 0,
         smsCodeLoading: false,
         btnText: '立即注册',
-        verifyCode: this.$api.core.getVerifyCode(),
+        verifyCode: '',
         rules: {
           cusName: [
             { required: true, trigger: 'blur', validator: validateCusName }
@@ -260,8 +262,12 @@
         this.$refs[formName].resetFields();
       },
       refreshVerifyCode () {
-        this.verifyCode = this.$api.core.getVerifyCode();
-      }
+        this.loading = true;
+        this.$api.core.getCaptcha(Math.random()).then(res =>{
+          this.verifyCode=res.body;
+          this.loading = false;
+        });
+      },
     }
   };
 </script>
@@ -278,7 +284,7 @@
     img{
       cursor: pointer;
     }
-    background: url('../login/img/loading.gif') no-repeat center 0;
+    //background: url('../login/img/loading.gif') no-repeat center 0;
   }
 </style>
 
