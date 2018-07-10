@@ -4,6 +4,12 @@ import httpUtil from '../../utils/http-util';
 import sysUtil from '../../utils/sys-util';
 
 export default {
+  register (data) { // 注册
+    let url = HttpPrefix.API + '/user/register';
+    return http.post(url, data).then(resp => {
+      return resp.body;
+    });
+  },
   login (data) { // 登录
     let url = HttpPrefix.API + '/user/login';
     return http.post(url, data).then(resp => {
@@ -29,18 +35,14 @@ export default {
     });
   },
   getVerifyCode () { // 获取验证码
-    let apiUrl = HttpPrefix.API + '/auth/getVerifycode?rdm=' + Math.random();
+    let apiUrl = HttpPrefix.API + '/auth/getVerifyCode?rdm=' + Math.random();
     console.debug('getVerifyCode return=' + httpUtil.genPath(apiUrl));
     return httpUtil.genPath(apiUrl);
   },
   getCaptcha (random) {
-    let url = HttpPrefix.API + '/auth/getVerifycode?rdm=' + random;
+    let url = HttpPrefix.API + '/auth/getVerifyCode?rdm=' + random;
     console.debug('getCaptcha url=' + url);
     return http.get(url);
-    // return http.get(url).then(resp => {
-    //   console.debug('getCaptcha resp.body=' + resp.body);
-    //   return resp.body;
-    // });
   },
   getSMS () { // 获取短信验证码
     let url = HttpPrefix.API + '/auth/verifyCode';
@@ -55,12 +57,9 @@ export default {
       return resp.body;
     });
   },
-  checkVertifyCode (kaptchaReceived) { // 核实验证码
-    let url = HttpPrefix.API + '/auth/verifyCode';
-    // 必须传入一个对象Object
-    return http.post(url, {kaptchaReceived}).then(resp => {
-      return resp.body;
-    });
+  checkVertifyCode (vertifyCode) { // 核实验证码
+    let url = HttpPrefix.API + '/auth/checkVerifyCode?verifyCode=' + vertifyCode;
+    return http.get(url);
   },
   getMsgTip (key = '') { // 获取消息提示
     let url = HttpPrefix.API + '/msg-tip/get-msg-tip';
