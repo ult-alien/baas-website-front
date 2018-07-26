@@ -41,16 +41,6 @@
             &nbsp;<i class="anticon icon-down text-muted"></i>
           </span>
           <div class="account-down">
-            <div class="item" v-if="member">
-              <i class="plicon plicon-huiyuan text-primary"></i>
-              <small>&nbsp;{{member}}</small>
-            </div>
-            <div class="item" @click="iconClick">
-              <span class="item-icon"><i class="plicon plicon-xiaoxi1"></i></span><span>我的消息<el-badge :value="msgCount" :max="99" class="item"/></span>
-            </div>
-            <div class="item text-center" @click="entClick">
-              <span>{{user.ent.organName}}</span>
-            </div>
             <div class="item">
               <span class="item-icon" style="color: black"><i class="plicon plicon-xiangqing"></i></span><span style="color: black">基本信息</span>
             </div>

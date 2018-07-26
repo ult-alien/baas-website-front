@@ -11,20 +11,16 @@
   export default {
     computed: {
       menus () {
-        /* if (this.isLogin) { /// 如果已经登录
-          let authApps = this.$store.state.contextData.user.extension.authApps;
-          let appsLinks = authApps.map((item) => {
-            return {resName: item.appAlias, stateName: item.appUrl};
-          });
-          return [{resName: '首页', stateName: 'home'}, ...appsLinks];
-        } */
-        if (this.isLogin) {
-            this.$store.dispatch('logout');
+        if (this.isLogin) { /// 如果已经登录
+          return [{resName: '首页', stateName: 'index'}];
         }
+        // if (this.isLogin) {
+        //     this.$store.dispatch('logout');
+        // }
         return [
           {resName: '首页', stateName: 'index'},
           {resName: '产品概述', stateName: 'product'},
-          {resName: '菜单', stateName: 'api-menu'},
+         // {resName: '菜单', stateName: 'api-menu'},
           {resName: 'API', stateName: 'baas-api'},
           {resName: '区块链', stateName: 'block-chain'},
           {resName: '合作洽谈', stateName: 'negotiate'},

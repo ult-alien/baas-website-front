@@ -16,6 +16,12 @@ export default {
       return resp.body;
     });
   },
+  logout (data) {
+    let url = HttpPrefix.API + '/user/logout';
+    return http.post(url, data).then(resp => {
+      return resp.body;
+    });
+  },
   H () { // 注销
     let url = HttpPrefix.API + '/user/logout';
     return http.post(url).then(resp => {

@@ -85,7 +85,7 @@ export default [
         path: 'baas-api',
         name: 'baas-api',
         component (resolve) {
-          require.ensure([], () => resolve(require('components/modules/bsp/layout.vue')), 'bsp.biz');
+          require.ensure([], () => resolve(require('components/modules/apidoc/index.vue')), 'baas-api');
         }
       }
     ]

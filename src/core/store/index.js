@@ -12,12 +12,17 @@ const debug = process.env.NODE_ENV !== 'production';
 const state = {
   isLogin: false,
   contextData: {
-    // constantsNameValueMap: {},
-    // constantsValueMap: {},
-    // dictionaryMap: {},
-    // sysParamsMap: {},
-    // systemMode: {},
-    // user: {userId: '', userName: '', loginName: '', menuTree: [{resId,resCode,resName,resType,chlidren:[]}]}
+    constantsNameValueMap: {},
+    constantsValueMap: {},
+    dictionaryMap: {},
+    sysParamsMap: {},
+    systemMode: {},
+    user: {
+      userId: '',
+      userName: '',
+      loginName: '',
+      menuTree: [{resId: '', resCode: '', resName: '', resType: '', chlidren: []}]
+    }
   },
   menus: [], // 根据user的menuTree生成，指只包括checked == true 的菜单
   menusMap: {}, //  根据user的menuTree生成

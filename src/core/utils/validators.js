@@ -48,6 +48,24 @@ export default {
           callback(new Error('请输入正确的证件号码'));
       }
     },
+    // 银行卡号校验器
+    bankNoValidator (rule, value, callback) {
+      if (!value || value === '') {
+        callback(new Error('银行卡号码不能为空'));
+      } else {
+        if (!(/^([1-9]{1})\d{1,30}$/.test(value))) {
+          callback(new Error('请输入合理的银行卡号码'));
+        } else {
+          // this.$api.cust.customer.checkAcctNo(value, rule.cusId ? rule.cusId : '').then(ret => {
+          //   if (ret) {
+          //     callback(new Error('银行卡号码已注册'));
+          //   } else {
+          //     callback();
+          //   }
+          // });
+        }
+      }
+    },
     // 验证电话号码
     telephoneValidator (rule, value, callback) {
       if (value === '') {
@@ -57,29 +75,11 @@ export default {
           callback(new Error('请输入合理手机号码'));
         } else {
           let params = {'phoneNo': value, 'reqType': 'phoneNo'};
-          if (rule.userId) {
-            params.userId = rule.userId;
-          }
-          if (rule.excludeCurUser) {
-            params.excludeCurUser = rule.excludeCurUser;
-          }
           Vue.api.core.checkUserExist(params).then(ret => {
-            if (rule.existForTrue) {
-              if (ret) {
-                callback();
-                if (rule.callback) {
-                  rule.callback(ret, rule.param);
-                }
-              } else {
-                callback(new Error('该手机号还未注册'));
-                rule.callback();
-              }
+            if (ret.type === 'success' && !ret.msg) {
+              callback(ret.msg);
             } else {
-              if (ret) {
-                callback(new Error('手机号码已注册'));
-              } else {
-                callback();
-              }
+              callback();
             }
           });
         }
@@ -104,7 +104,7 @@ export default {
       } else {
         this.$api.bsp.user.checkCode(rule.userId, value).then(ret => {
           if (ret.type === 'success' && !ret.msg) {
-            callback(new Error('登录名已存在'));
+            callback(ret.msg);
           } else {
             callback();
           }
