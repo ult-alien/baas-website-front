@@ -7,6 +7,31 @@
             <span style="color: #000;" slot="companyName">GBaaS</span>
           </logo>
         </div>
+        <div class="account" v-if="isLogin">
+          <span class="msg" @click="iconClick">
+            <el-badge :value="msgCount" :max="99" class="item"/>
+            <img src="./img/male.png">
+          </span>
+          <span class="name" style="color: black;">
+            <span>{{userName}}</span>
+            &nbsp;<i class="anticon icon-down text-muted"></i>
+          </span>
+          <div class="account-down">
+            <div class="item" @click="toAccountInfo">
+              <span class="item-icon" style="color: black"><i class="plicon plicon-xiangqing"></i></span><span style="color: black">基本信息</span>
+            </div>
+            <div class="item" @click="logout">
+              <span class="item-icon" style="color: black"><i class="plicon plicon-tuichu"></i></span><span style="color: black">退出</span>
+            </div>
+          </div>
+
+          <span class="name" v-if="isLogin">
+            <span @click="nameClick">{{userName}}</span>
+            &nbsp;|&nbsp;
+            <span @click="logout">退出</span>
+          </span>
+        </div>
+
         <div class="nav-bar">
           <ul ref="headerNav" :class="[$store.state.showMobileNav ? 'mobileNav' : '' ]">
             <li v-for="item in menus">
@@ -31,30 +56,7 @@
             </li>
           </ul>
         </div>
-        <div class="account" v-if="isLogin">
-          <span class="msg" @click="iconClick">
-            <el-badge :value="msgCount" :max="99" class="item"/>
-            <img src="./img/male.png">
-          </span>
-          <span class="name" style="color: black;">
-            <span>{{user.userName}}</span>
-            &nbsp;<i class="anticon icon-down text-muted"></i>
-          </span>
-          <div class="account-down">
-            <div class="item">
-              <span class="item-icon" style="color: black"><i class="plicon plicon-xiangqing"></i></span><span style="color: black">基本信息</span>
-            </div>
-            <div class="item" @click="logout">
-              <span class="item-icon" style="color: black"><i class="plicon plicon-tuichu"></i></span><span style="color: black">退出</span>
-            </div>
-          </div>
 
-          <span class="name" v-if="isLogin">
-            <span @click="nameClick">{{user.userName}}</span>
-            &nbsp;|&nbsp;
-            <span @click="logout">退出</span>
-          </span>
-        </div>
         <div class="pull-right">
           <slot name="action"></slot>
           <i class="portal portal-menu" id="menuIcon" @click="toggleMobileNav()"></i>
@@ -70,6 +72,7 @@
   import {MsgType} from 'core/constants';
   import changeEnt from './change-ent.vue';
   import logo from '../../../components/modules/home/sub/ui/logo.vue';
+  import cookieUtil from '../../../core/utils/cookie-util';
   export default {
     name: config.prefix + 'Header',
     props: {
@@ -107,11 +110,11 @@
       msgCount () {
         return this.$store.state.msgTip['NotReadedCount'] || 0;
       },
-      user () {
-        return this.$store.state.contextData.user || {};
+      userName () {
+        return cookieUtil.getCookieByName('userName') || {};
       },
       isLogin () {
-        return this.$store.state.isLogin;
+        return cookieUtil.getCookieByName('isLogin') === 'true';
       }
     },
     methods: {
@@ -126,6 +129,9 @@
           this.$store.dispatch('logout');
           this.$router.push({name: 'login'}); /// 加入
         });
+      },
+      toAccountInfo () {
+        this.$router.push({name: 'account-info'});
       },
       iconClick () {
         this.$emit('iconclick');

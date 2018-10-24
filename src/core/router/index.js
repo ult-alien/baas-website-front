@@ -1,9 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from './routes.config';
-import store from '../store';
-import * as types from '../store/mutation-types';
-import routerUtil from './router-util';
 
 Vue.routesConfig = [];
 let router = {instance: ''};
@@ -19,32 +16,9 @@ function initRouter (Vue) {
     routes: Vue.routesConfig
   });
 
-  // 把路由信息配置到vuex
-  store.commit(types.SET_ROUTER_MAP, routerUtil.getRouterMap(Vue.routesConfig));
-
   // 如果是进入home路由，则判断是否登录，如果没有登录跳转登录页面
   router.instance.beforeEach((to, from, next) => {
-    // 判断是否有权限访问
-    if (!routerUtil.hasPermission(to)) {
-      next({name: 'permission'});
-      return;
-    }
-    // 判断是否存在需要授权的路由
-    if (to.matched && to.matched.some(record => record.meta.requiresAuth)) {
-      if (!store.state.isLogin) {
-        Vue.api.core.getContextData().then(ret2 => {
-          store.dispatch('setContextData', ret2);
-          routerUtil.navCorrectRoute(to, from, next);
-        });
-        return;
-      } else {
-        if (!store.state.contextData.user.extension.isHasAppPermission) {
-          next({name: 'permission'});
-          return;
-        }
-      }
-    }
-    routerUtil.navCorrectRoute(to, from, next);
+    next();
   });
 }
 

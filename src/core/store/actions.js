@@ -1,14 +1,14 @@
 import * as types from './mutation-types';
 import Vue from 'vue';
 import {MsgType} from '../constants';
-// import sysUtil from '../utils/sys-util';
-import menuUtil from '../utils/menu-util';
+import sysUtil from '../utils/sys-util';
 
 // 登录
 export const login = ({commit, dispatch}, param) => {
   let data = {...param};
+  console.debug(data);
   // md5 加密
-  // data.password = sysUtil.encryptor(data.password);
+  data.password = sysUtil.encryptor(data.password);
   return new Promise((resolve, reject) => {
     Vue.api.core.login(data).then(ret => {
       if (ret.type === MsgType.SUCCESS || ret.type === MsgType.INFO) {
@@ -29,12 +29,6 @@ export const refreshContextData = ({commit, state}) => {
   return new Promise((resolve, reject) => {
     Vue.api.core.refreshContextData().then(ret => {
       let contextData = {...state.contextData};
-      if (ret && ret['dictionaryMap']) {
-        contextData['dictionaryMap'] = ret['dictionaryMap'];
-      }
-      if (ret && ret['sysParamsMap']) {
-        contextData['sysParamsMap'] = ret['sysParamsMap'];
-      }
       commit(types.SET_CONTEXT_DATA, contextData);
       resolve(true);
     });
@@ -47,13 +41,7 @@ export const setContextData = ({commit}, contextData) => {
 };
 
 const setContextDataFun = (commit, contextData) => {
-  let menusMap = {};
-  let codeMap = {};
-  let menus = menuUtil.findCheckedMenus(contextData.user.menuTree, menusMap, codeMap);
   commit(types.SET_LOGIN_STATE, true);
-  commit(types.SET_MENUS, menus);
-  commit(types.SET_MENUS_MAP, menusMap);
-  commit(types.SET_CODE_MENUS_MAP, codeMap);
   commit(types.SET_CONTEXT_DATA, contextData);
 };
 

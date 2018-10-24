@@ -14,8 +14,8 @@
       return {
         height: 780 / (1920 / window.screen.availWidth) + 'px',
         images: [
-          {imgUrl: 'static/images/index/banner/1.jpg'},
-          {imgUrl: 'static/images/index/banner/2.jpg'}
+          {imgUrl: 'static/images/index/banner/banner_1.png'},
+          {imgUrl: 'static/images/index/banner/banner_2.png'}
         ]
       };
     },

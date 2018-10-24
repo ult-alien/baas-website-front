@@ -34,8 +34,14 @@ export default {
       return resp.body;
     });
   },
+  getUserInfo (userName) { // 获取上下文信息
+    let url = HttpPrefix.API + '/user/baseInfo?userName=' + userName;
+    return http.get(url).then(resp => {
+      return resp.body;
+    });
+  },
   refreshContextData () { //  刷新缓存
-    let url = HttpPrefix.API + '/context/refresh-context-data';
+    let url = HttpPrefix.API + '/user/get-contextData';
     return http.post(url).then(resp => {
       return resp.body;
     });

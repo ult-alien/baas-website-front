@@ -10,7 +10,7 @@ export default [
     path: 'example.components.illustration',
     name: 'example.components.illustration',
     component (resolve) {
-      require.ensure([], () => resolve(require('components/modules/home/sub/about.vue')), 'example.components.illustration');
+      require.ensure([], () => resolve(require('components/modules/home/sub/base-info.vue')), 'example.components.illustration');
     }
   },
   {

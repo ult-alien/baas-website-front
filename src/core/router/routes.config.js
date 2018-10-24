@@ -8,7 +8,7 @@ import config from '../../config';
 export default [
   {
     desc: '',
-    name: '',
+    name: 'home',
     path: '/',
     redirect () {
       // return config.emptyRoute() || config.defaultRoute();
@@ -29,6 +29,14 @@ export default [
     name: 'register',
     component (resolve) {
       require.ensure([], () => resolve(require('components/register/register.vue')), 'register');
+    }
+  },
+  {
+    desc: '注册成功',
+    path: '/admin/register-success',
+    name: 'register-success',
+    component (resolve) {
+      require.ensure([], () => resolve(require('components/register/register-success.vue')), 'register-success');
     }
   },
   {

@@ -4,7 +4,7 @@
  *      2、desc 不是vue-router的配置，是自动定义的，主要用来描述当前路由
  * @type {[*]}
  */
-import apidocRoutes from './apidocRoutes-config';
+import leftMenuRoutes from './leftMenuRoutes-config';
 
 export default [
   {
@@ -52,7 +52,7 @@ export default [
         }
       },
       {
-        desc: '区块链',
+        desc: '行业应用',
         path: 'block-chain',
         name: 'block-chain',
         component (resolve) {
@@ -64,9 +64,8 @@ export default [
         path: 'api-menu',
         name: 'api-menu',
         component (resolve) {
-          require.ensure([], () => resolve(require('components/modules/home/sub/ui/apidoc-menu.vue')), 'api-menu');
-        },
-        children: apidocRoutes
+          require.ensure([], () => resolve(require('components/modules/home/sub/ui/baseInfo-menu.vue')), 'api-menu');
+        }
       },
       {
         desc: '产品',
@@ -87,6 +86,15 @@ export default [
         component (resolve) {
           require.ensure([], () => resolve(require('components/modules/apidoc/index.vue')), 'baas-api');
         }
+      },
+      {
+        desc: '账户信息',
+        path: 'account-info',
+        name: 'account-info',
+        component (resolve) {
+          require.ensure([], () => resolve(require('components/modules/home/sub/ui/baseInfo-menu.vue')), 'account-info');
+        },
+        children: leftMenuRoutes
       }
     ]
   }

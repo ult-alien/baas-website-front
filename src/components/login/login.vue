@@ -55,6 +55,7 @@
   // let devEnv = require('../../../config/dev.env');
   import config from '../../config';
   import { MsgType } from 'core/constants';
+  import cookieUtil from '../../core/utils/cookie-util';
   export default {
     data () {
       return {
@@ -142,7 +143,7 @@
     },
     created () {
       this.refreshVerifyCode();
-      if (this.$store.state.isLogin) {
+      if (cookieUtil.getCookieByName('isLogin') === 'true') {
         this.$router.push(config.defaultRoute());
       }
     },

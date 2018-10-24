@@ -11,7 +11,7 @@
           <pl-content-box-block :fixed-width="false">
             <pl-content-box-card class="accreditation-content-box no-border">
               <div class="accreditation-content">
-                <el-form-item prop="loginName" label="用户姓名">
+                <el-form-item prop="loginName" ref="registerForm_loginName" label="用户姓名">
                   <el-row>
                     <el-col :span="12">
                       <el-input :disabled="!newUser" v-model="registerForm.loginName" placeholder="请输入用户姓名" tips="您的姓名将作为系统的用户名">
@@ -26,7 +26,7 @@
                   </el-row>
 
                 </el-form-item>
-                <el-form-item prop="email" label="注册邮箱">
+                <el-form-item prop="email" ref="registerForm_email" label="注册邮箱">
                   <el-row>
                     <el-col :span="12">
                       <el-input  v-model="registerForm.email" placeholder="请输入注册邮箱" tips="您的注册邮箱可作为登录账户名称">
@@ -112,8 +112,8 @@
           return;
         }
         this.$api.core.checkVertifyCode(value).then(ret => {
-          if (ret.type === 'error') {
-            callback(new Error(ret.msg));
+          if (ret.body.type !== 'success') {
+            callback(new Error(ret.body.msg));
           }else {
             callback();
           }
@@ -127,12 +127,17 @@
           callback(new Error('长度在 3 到 30 个字符'));
           return;
         }
+        let context = this;
         this.$api.core.checkUserExist({'loginName': value,'reqType':'loginName'}).then(ret => {
-          if (ret.type === 'error') {
-            callback(new Error(ret.msg));
-            return;
+          if (ret.type === 'error'|| ret.type === 'warning') {
+            callback(ret.msg);
+            console.log(ret.msg);
+            context.$refs['registerForm_loginName'].resetField();
+            //this.resetFormField('registerForm_loginName');
+            //this.$refs['registerForm_loginName'].resetField();
+          }else {
+            callback();
           }
-          callback();
         });
       };
       let validateEmail = (rule, value, callback) => {
@@ -140,13 +145,13 @@
           callback(new Error('请输入注册邮箱'));
           return;
         }
-        let apitemp = this.$api.core;
+        let context = this;
         this.emailValidator(rule,value,function (result) {
           if (!result) {
-            apitemp.checkUserExist({'email': value,'reqType':'email'}).then(ret => {
-              if (ret.type === 'error') {
-                callback(new Error(ret.msg));
-                return;
+            context.$api.core.checkUserExist({'email': value,'reqType':'email'}).then(ret => {
+              if (ret.type === 'error' || ret.type === 'warning') {
+                callback(ret.msg);
+                context.$refs['registerForm_email'].resetField();
               }
               callback();
             });
@@ -161,7 +166,14 @@
           callback(new Error('请输入注册手机号'));
           return;
         }
-        this.telephoneValidator(rule,value,callback);
+        this.telephoneValidator(rule,value,function (ret) {
+            if (ret) {
+              callback(ret);
+            } else {
+              callback();
+            }
+
+        });
       };
       return {
         registerForm: {
@@ -185,8 +197,8 @@
             { min: 2, max: 20, message: '长度在 3 到 30 个字符', trigger: 'blur' }
           ],
           email: [
-            { required: true, message: '请输入您的注册邮箱', trigger: 'blur', validator: validateEmail },
-            { min: 2, max: 20, message: '请检查邮箱有效性', trigger: 'blur' }
+            { required: true, message: '请输入您的注册邮箱', trigger: 'change'},
+            { min: 2, max: 20, message: '请检查邮箱有效性', trigger: 'blur', validator: validateEmail  }
           ],
           phoneNo: [
             {required: true, message: '手机号码不能为空', trigger: 'change'},
@@ -222,11 +234,13 @@
         }
       },
       go (msg) {
+        this.$router.push({'name': 'register-success'});
+        /*
         if (msg.bean && msg.bean.serviceUrl) {
           window.location.href = msg.bean.serviceUrl;
         } else {
-          this.$router.push({'name': 'bsp.accreditation.register-success'});
-        }
+
+        }*/
       },
       getSMS () {
         console.debug("getSMS...");
@@ -242,13 +256,13 @@
                 clearInterval(timer);
               }
             }, 1000);
-            this.$api.cust.register.sendSMS({phoneNo: this.registerForm.phoneNo}).then(ret => {
+           /* this.$api.cust.register.sendSMS({phoneNo: this.registerForm.phoneNo}).then(ret => {
 //              this.$notify({
 //                message: ret.msg,
 //                type: MsgType.INFO,
 //                duration: 3000
 //              });
-            });
+            });*/
           }
         });
       },
@@ -264,12 +278,9 @@
                 // 注册成功之后登陆
                 let form = {};
                 form = {
-                  'username': this.registerForm.phoneNo,
-                  'password': this.registerForm.password,
-                  'kaptchaReceived': this.registerForm.verifyCode,
-                  'grant_type': 'password',
-                  'client': 'frontend',
-                  appCode: config.appCode
+                  username: this.registerForm.phoneNo,
+                  password: this.registerForm.password,
+                  verifyCode: this.registerForm.verifyCode
                 };
                 this.loading = true;
                 this.btnText = '正在登录...';

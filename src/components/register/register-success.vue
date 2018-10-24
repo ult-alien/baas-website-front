@@ -7,11 +7,11 @@
               <h1>
                 恭喜，注册成功！
               </h1>
-              <p style="font-size: 120%;">您已经成功注册成为共赢链科技链单平台的用户，下次登录请使用已注册的手机号及密码。</p>
+              <p style="font-size: 120%;">您已经成功注册成为GBaaS平台的用户，下次登录请使用已注册的手机号及密码。</p>
             </div>
           </div>
           <div class="content-info">
-            继续完成企业认证，尊享链单服务，助力企业发展。<span style="color: red;">{{timeLeft}}</span>秒后自动跳转至企业实名认证页面...... <br>
+            <span style="color: red;">{{timeLeft}}</span>秒后自动跳转至主页面...... <br>
             如未跳转，<router-link to="/accreditation/step" class="link">请点击此处&nbsp;<i class="anticon icon-link"></i></router-link>
           </div>
         </pl-content-box-block>
@@ -39,7 +39,7 @@
           for (let i = 0; i < this.timer.length; i++) {
             window.clearTimeout(this.timer[i]);
           }
-          this.$router.push({'name': 'bsp.accreditation.step'});
+          this.$router.push({'name': 'home'});
         }
       }
     },
@@ -56,7 +56,7 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
-  @import "../../../../../assets/scss/_variables.scss";
+  @import "../../assets/scss/_variables.scss";
   .success-msg{
     color: cadetblue;
     background-color: $primary-color-light;

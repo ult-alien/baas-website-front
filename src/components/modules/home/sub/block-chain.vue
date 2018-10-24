@@ -5,10 +5,9 @@
       <div class="container">
         <div class="block">
           <div class="left">
-            <h2>我们与恒星基金会(Stellar)是战略合作伙伴</h2>
-            <p class="no-indent">我司是恒星基金会的战略合作伙伴，在此基础上利用区块链技术的创新应用搭建的系统平台（链单系统），就是针对现阶段金融领域所面临痛点的解决方案技术而研发的，特别适合使用在资产发行、拆分、流转、清算等的应用上。</p>
-            <p class="no-indent">恒星网络Stellar，创始人Jed McCaleb，是美国电驴的创始人，同时也是Ripple的联合创始人。Stellar用于搭建一个数字货币与法定货币之间传输的去中心化网关,是一个用于价值交换的开源协议，目前恒星币总市值在全球始终在前十，我司联合创始人梁然将Jed及Stellar引荐到中国。</p>
-            <p class="no-indent">恒星网络是基于Ripple基础上进行开发，在比特币和瑞波的技术基础上做了的很多改进，特别是相关的共识机制和验证算法，恒星网络运行节点性能得到提高，并节点资源需求非常低。众多改进其中，最大改动的是恒星支付系统的支撑算法SCP（恒星共识协议），是目前最安全的类拜占庭算法。</p>
+            <h2>资产上链</h2>
+            <p class="no-indent">将现实中的实体资产在区块链上进行登记流通。</p>
+            <p class="no-indent">在金融业务典型的资产交易、大数据交易、共享经济、积分通兑等场景下，对接BaaS平台，可以让资产轻松上链，让区块链在数字资产的发行和流通中扮演资产确权、交易确认、记账、对账和清算的角色；而区块链技术的防篡改能力，将有效防止数据篡改，规避内部作弊风险，提高资产公信力</p>
           </div>
           <div class="right bc1">
             <img src="static/images/block-chain/bc1.png" style="max-width: 96%;">
@@ -20,14 +19,8 @@
     <div class="container">
       <div class="block">
         <div class="right">
-          <h2>我司区块链技术的创新之处和优势</h2>
-          <!--<p>我司选用的Stellar达到千笔每秒，远远超过比特币和以太坊的吞量。依托区块链的6大特性，让供应链各个环节透明、公开、公正，从合同签署开始上链、物流信息、仓单信息、发票信息、对账信息全部在分布式账本中记录，真正实现商流、物流、信息流、资金流四流合一，让资金真正的脱虚向实。</p>-->
-          <p class="no-indent">整个支付和保理体系的账本是基于区块链的分布式账本；</p>
-          <p class="no-indent">账户体系是基于哈希加密算法的区块链账户；</p>
-          <p class="no-indent">数字凭证使用Stellar发行的，不会超发和双花；</p>
-          <p class="no-indent">各种数据需要经过多方共识和验证，才能写入账本，保证不可篡改性；</p>
-          <p class="no-indent">数字凭证的拆分，流转等所有交易行为皆可追溯，实现轻松举证和追责；</p>
-          <p class="no-indent">性能强大，选用的Stellar达到千笔每秒，远远超过比特币和以太坊的吞量。</p>
+          <h2>防伪溯源</h2>
+          <p class="no-indent">企业商品的生产销售过程信息通过BaaS平台上链，轻松帮助企业记录商品安全透明、不可篡改、可追溯的生产和流转信息，为客户提供一站式区块链服务。协助客户进行商品生产销售的信息披露，为企业客户快速抓住消费者，提高核心竞争力。</p>
         </div>
         <div class="left bc2">
           <img src="static/images/block-chain/bc2.png" style="max-width: 90%;">
@@ -87,10 +80,8 @@
     <div class="container">
       <div class="block">
         <div class="right">
-          <h2>我们的实力</h2>
-          <p class="no-indent">我司是Stellar全球战略合作伙伴，核心团队来自蚂蚁金服、万向区块链、TCL金融、中信网科等。区块链技术方面由工信部区块链应用和发展白皮书、Chinaledger分布式总账白皮书起草者之一，Stellar全球开发者大赛获奖金最多的选手梁然主导。</p>
-          <p class="no-indent">梁然为浙江大学计算机硕士，拥有10年以上IT经验，曾任美国道富银行亚太区开发经理。区块链技术专家，中国分布式总账基础协议联盟ChinaLedger高级研究员，万向区块链实验室项目经理，中国计算机协会区块链讲师。主要研究区块链中资产的发行和交易，参与编写了ChinaLedger技术白皮书，工信部中国区块链技术和应用发展白皮书等。从12年开始关注研究区块链。是RippleFox创始人（RippleFox是中国最大的Ripple和Stellar网关），是中国Ripple和Stellar社区的主要发起人和维护人。</p>
-          <p class="no-indent">喻学才，共赢链顾问，哈尔滨工业大学计算机博士，为高级软件工程，万向区块链实验室技术专家，工信部中国区块链技术和应用发展白皮书编写人之一。</p>
+          <h2>存证取证</h2>
+          <p class="no-indent">BaaS平台整合了ipfs分布式存储协议，提供安全可靠的分布式数据存储服务。在传统的电子票据、合同、用户信息、存证等记录保全过程中，存在效率底下、流程繁琐、票据作假等弊端。BaaS为用户提供便捷的接口服务，使用户使用简单易懂的接口就可以实现区块链存证取证服务。</p>
         </div>
         <div class="left strength">
           <img src="static/images/block-chain/strength.png" style="max-width: 90%;">

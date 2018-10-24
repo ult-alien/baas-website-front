@@ -76,8 +76,8 @@ export default {
         } else {
           let params = {'phoneNo': value, 'reqType': 'phoneNo'};
           Vue.api.core.checkUserExist(params).then(ret => {
-            if (ret.type === 'success' && !ret.msg) {
-              callback(ret.msg);
+            if (ret.type === 'error' || ret.type === 'warning') {
+              callback(new Error(ret.msg));
             } else {
               callback();
             }

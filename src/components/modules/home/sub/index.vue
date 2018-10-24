@@ -7,22 +7,22 @@
         <block-card :can-scale="true">
           <img slot="pic" src="static/images/index/pay.png" style="height: 150px;width: 150px;"/>
           <div class="block-card-content">
-            <p class="block-card-title no-indent text-bold">创新支付与清结算体系</p>
-            <p class="block-card-desc no-indent">重塑传统供应链金融，帮助核心企业零人力零投入打造“商票、银票”体系外的创新支付和清结算体系</p>
+            <p class="block-card-title no-indent text-bold">Stellar</p>
+            <p class="block-card-desc no-indent">联邦拜占庭协议系统；SCP协议，拥有分散控制、灵活信任、低延迟、渐进安全四大关键属性；3000TPS企业级应用吞吐量</p>
           </div>
         </block-card>
         <block-card :can-scale="true">
           <img slot="pic" src="static/images/index/return.png" style="height: 150px;width: 150px;"/>
           <div class="block-card-content">
-            <p class="block-card-title no-indent text-bold">纯线上随借随还体系</p>
-            <p class="block-card-desc no-indent">纯线上、便捷高效、随借随还的创新保理体系，为中小企业解决融资难、融资贵难题</p>
+            <p class="block-card-title no-indent text-bold">IPFS</p>
+            <p class="block-card-desc no-indent">一种内容可寻址、版本化、点对点的超媒体分布式存储、传输协议。实现电子票据、用户信息安全分布式存储，高效读取</p>
           </div>
         </block-card>
         <block-card :can-scale="true">
           <img slot="pic" src="static/images/index/industry.png" style="height: 150px;width: 150px;"/>
           <div class="block-card-content">
-            <p class="block-card-title no-indent text-bold">真正落地的区块链技术</p>
-            <p class="block-card-desc no-indent">整个账本和账户体系是基于区块链的分布式账本，资产的发行从源头开始，防止超发和双花，全流程可追溯，并且信息不可篡改</p>
+            <p class="block-card-title no-indent text-bold">RESTful</p>
+            <p class="block-card-desc no-indent">友好简单、稳定安全，用传统技术桥接区块链服务</p>
           </div>
         </block-card>
       </block>
